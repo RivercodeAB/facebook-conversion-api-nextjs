@@ -9,7 +9,12 @@
     "esModuleInterop": true,
     "declaration": true,
   },
-  "exclude":[
+  "include": [
+    "./src",
+    "./types",
+    "./.eslintrc.js",
+  ],
+  "exclude": [
     "./node_modules",
   ]
 }
