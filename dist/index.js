@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FBEvent = void 0;
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
@@ -13,4 +16,4 @@ const FBEvent = (event) => {
         body: JSON.stringify(event),
     });
 };
-export default { FBEvent };
+exports.FBEvent = FBEvent;

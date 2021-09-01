@@ -1,5 +1,11 @@
-import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
-import { clientRefererUrl, clientIpAddress, clientUserAgent } from '../utils/request';
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FBEventsHandler = void 0;
+const facebook_conversion_api_1 = __importDefault(require("@rivercode/facebook-conversion-api"));
+const request_1 = require("../utils/request");
 /**
  * Facebook Conversion API Event Handler for Next.js.
  *
@@ -25,13 +31,13 @@ const FBEventsHandler = (req, res) => {
             error: 'The request body is missing required parameters',
         });
     }
-    const FBConversionAPI = new FacebookConversionAPI(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails, phones, clientIpAddress(req), clientUserAgent(req), '', '', debug);
+    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails, phones, (0, request_1.clientIpAddress)(req), (0, request_1.clientUserAgent)(req), '', '', debug);
     products.forEach((product) => {
         FBConversionAPI.addProduct(product.sku, product.quantity);
     });
-    FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { value, currency });
+    FBConversionAPI.sendEvent(eventName, (0, request_1.clientRefererUrl)(req), { value, currency });
     return res.status(200).json({
         status: 'Success',
     });
 };
-export default { FBEventsHandler };
+exports.FBEventsHandler = FBEventsHandler;
