@@ -11,7 +11,7 @@ npm install @rivercode/facebook-conversion-api-nextjs
 ## 1. Create Next.js API Route
 pages/api/fb-events.js
 ```jsx
-import { FBEventsHandler } from 'facebook-conversion-api-nextjs/handlers';
+import { FBEventsHandler } from '@rivercode/facebook-conversion-api-nextjs/handlers';
 
 export default FBEventsHandler;
 ```
@@ -27,7 +27,7 @@ Read more here on how you can get your [access token](https://developers.faceboo
 
 ## 2. Start Sending Events
 ```jsx
-import { FBEvent } from 'facebook-conversion-api-nextjs';
+import { FBEvent } from '@rivercode/facebook-conversion-api-nextjs';
 
 FBEvent({
   eventName: 'ViewContent', // ViewContent, AddToCart, InitiateCheckout or Purchase
