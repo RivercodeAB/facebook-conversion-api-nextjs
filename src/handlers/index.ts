@@ -64,5 +64,4 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { FBEventsHandler };
+export default { FBEventsHandler };

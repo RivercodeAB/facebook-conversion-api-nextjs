@@ -34,5 +34,4 @@ const FBEventsHandler = (req, res) => {
         status: 'Success',
     });
 };
-// eslint-disable-next-line import/prefer-default-export
-export { FBEventsHandler };
+export default { FBEventsHandler };

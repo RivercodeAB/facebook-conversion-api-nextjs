@@ -13,5 +13,4 @@ const FBEvent = (event) => {
         body: JSON.stringify(event),
     });
 };
-// eslint-disable-next-line import/prefer-default-export
-export { FBEvent };
+export default { FBEvent };

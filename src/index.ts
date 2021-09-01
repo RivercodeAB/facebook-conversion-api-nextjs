@@ -16,5 +16,4 @@ const FBEvent = (event: FBEventType) => {
   });
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { FBEvent };
+export default { FBEvent };
