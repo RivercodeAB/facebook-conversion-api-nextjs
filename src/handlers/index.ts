@@ -35,7 +35,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     debug,
   } = req.body as FBEventType;
 
-  if (!eventName || !products || products?.length < 1 || !value || !currency) {
+  if (!eventName || !products || products?.length < 1) {
     return res.status(400).json({
       error: 'The request body is missing required parameters',
     });
@@ -54,14 +54,10 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   products.forEach((product) => {
-    FBConversionAPI.addProduct(product.sku, Number(product.quantity));
+    FBConversionAPI.addProduct(product.sku, product.quantity);
   });
 
-  if (['InitiateCheckout', 'Purchase'].includes(eventName)) {
-    FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { currency, value });
-  } else {
-    FBConversionAPI.sendEvent(eventName, clientRefererUrl(req));
-  }
+  FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { value, currency });
 
   return res.status(200).json({
     status: 'Success',

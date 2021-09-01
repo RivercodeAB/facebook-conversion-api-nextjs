@@ -3,8 +3,8 @@ import FBEventType from '../types';
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
- * @constructor
  * @param event
+ * @constructor
  */
 const FBEvent = (event: FBEventType) => {
   fetch('/api/fb-events', {

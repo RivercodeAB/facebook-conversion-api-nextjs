@@ -6,8 +6,8 @@ type FBEventType = {
     sku: string
     quantity: number
   }]
-  currency: string
-  value: number
+  value?: number
+  currency?: string
   debug: boolean
 };
 
