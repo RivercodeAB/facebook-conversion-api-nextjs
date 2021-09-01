@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api-nextjs#readme",
   "dependencies": {
-    "@rivercode/facebook-conversion-api": "^1.1.0"
+    "@rivercode/facebook-conversion-api": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^16.7.1",

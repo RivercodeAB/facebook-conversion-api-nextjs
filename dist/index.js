@@ -1,8 +1,8 @@
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
- * @constructor
  * @param event
+ * @constructor
  */
 const FBEvent = (event) => {
     fetch('/api/fb-events', {

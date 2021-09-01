@@ -20,21 +20,16 @@ const FBEventsHandler = (req, res) => {
         throw new Error('Missing FB_PIXEL_ID in environment file.');
     }
     const { eventName, emails, phones, products, value, currency, debug, } = req.body;
-    if (!eventName || !products || (products === null || products === void 0 ? void 0 : products.length) < 1 || !value || !currency) {
+    if (!eventName || !products || (products === null || products === void 0 ? void 0 : products.length) < 1) {
         return res.status(400).json({
             error: 'The request body is missing required parameters',
         });
     }
     const FBConversionAPI = new FacebookConversionAPI(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails, phones, clientIpAddress(req), clientUserAgent(req), '', '', debug);
     products.forEach((product) => {
-        FBConversionAPI.addProduct(product.sku, Number(product.quantity));
+        FBConversionAPI.addProduct(product.sku, product.quantity);
     });
-    if (['InitiateCheckout', 'Purchase'].includes(eventName)) {
-        FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { currency, value });
-    }
-    else {
-        FBConversionAPI.sendEvent(eventName, clientRefererUrl(req));
-    }
+    FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { value, currency });
     return res.status(200).json({
         status: 'Success',
     });
