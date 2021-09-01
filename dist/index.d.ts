@@ -1,9 +1,9 @@
-import FBEventRequest from '../types';
+import FBEventType from '../types';
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
  * @constructor
- * @param eventRequest
+ * @param event
  */
-declare const FBEvent: (eventRequest: FBEventRequest) => void;
+declare const FBEvent: (event: FBEventType) => void;
 export { FBEvent };

@@ -1,19 +1,17 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FBEvent = void 0;
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
  * @constructor
- * @param eventRequest
+ * @param event
  */
-const FBEvent = (eventRequest) => {
+const FBEvent = (event) => {
     fetch('/api/fb-events', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(eventRequest),
+        body: JSON.stringify(event),
     });
 };
-exports.FBEvent = FBEvent;
+// eslint-disable-next-line import/prefer-default-export
+export { FBEvent };

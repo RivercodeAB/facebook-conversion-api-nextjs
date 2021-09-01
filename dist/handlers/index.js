@@ -1,11 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FBEventsHandler = void 0;
-const facebook_conversion_api_1 = __importDefault(require("@rivercode/facebook-conversion-api"));
-const request_1 = require("../utils/request");
+import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
+import { clientRefererUrl, clientIpAddress, clientUserAgent } from '../utils/request';
 /**
  * Facebook Conversion API Event Handler for Next.js.
  *
@@ -31,18 +25,19 @@ const FBEventsHandler = (req, res) => {
             error: 'The request body is missing required parameters',
         });
     }
-    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails, phones, (0, request_1.clientIpAddress)(req), (0, request_1.clientUserAgent)(req), '', '', debug);
+    const FBConversionAPI = new FacebookConversionAPI(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails, phones, clientIpAddress(req), clientUserAgent(req), '', '', debug);
     products.forEach((product) => {
         FBConversionAPI.addProduct(product.sku, Number(product.quantity));
     });
     if (['InitiateCheckout', 'Purchase'].includes(eventName)) {
-        FBConversionAPI.sendEvent(eventName, (0, request_1.clientRefererUrl)(req), { currency, value });
+        FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { currency, value });
     }
     else {
-        FBConversionAPI.sendEvent(eventName, (0, request_1.clientRefererUrl)(req));
+        FBConversionAPI.sendEvent(eventName, clientRefererUrl(req));
     }
     return res.status(200).json({
         status: 'Success',
     });
 };
-exports.FBEventsHandler = FBEventsHandler;
+// eslint-disable-next-line import/prefer-default-export
+export { FBEventsHandler };
