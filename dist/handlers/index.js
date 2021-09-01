@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FBEventsHandler = void 0;
 const facebook_conversion_api_1 = __importDefault(require("@rivercode/facebook-conversion-api"));
 const request_1 = require("../utils/request");
 /**
@@ -44,4 +45,4 @@ const FBEventsHandler = (req, res) => {
         status: 'Success',
     });
 };
-exports.default = FBEventsHandler;
+exports.FBEventsHandler = FBEventsHandler;

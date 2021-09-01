@@ -1,29 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FBEvent = void 0;
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
- * @param eventName
- * @param products
- * @param currency
- * @param value
- * @param debug
  * @constructor
+ * @param eventRequest
  */
-const FBEvent = (eventName, products, currency, value, debug = false) => {
+const FBEvent = (eventRequest) => {
     fetch('/api/fb-events', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            eventName,
-            products,
-            value,
-            currency,
-            debug,
-        }),
-    })
-        .then((r) => console.log(r.json()));
+        body: JSON.stringify(eventRequest),
+    });
 };
-exports.default = FBEvent;
+exports.FBEvent = FBEvent;

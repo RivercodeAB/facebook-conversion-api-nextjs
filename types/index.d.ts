@@ -1,4 +1,4 @@
-type FBEventRequest = {
+type FBEventType = {
   eventName: string
   emails: Array<string> | null
   phones: Array<string> | null
@@ -11,4 +11,4 @@ type FBEventRequest = {
   debug: boolean
 };
 
-export default FBEventRequest;
+export default FBEventType;

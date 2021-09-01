@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
 import { clientRefererUrl, clientIpAddress, clientUserAgent } from '../utils/request';
-import FBEventRequest from '../../types';
+import FBEventType from '../../types';
 
 /**
  * Facebook Conversion API Event Handler for Next.js.
@@ -33,7 +33,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     value,
     currency,
     debug,
-  } = req.body as FBEventRequest;
+  } = req.body as FBEventType;
 
   if (!eventName || !products || products?.length < 1 || !value || !currency) {
     return res.status(400).json({
@@ -68,4 +68,5 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
   });
 };
 
-export default FBEventsHandler;
+// eslint-disable-next-line import/prefer-default-export
+export { FBEventsHandler };

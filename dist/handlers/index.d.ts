@@ -7,4 +7,4 @@ import type { NextApiRequest, NextApiResponse } from 'next';
  * @constructor
  */
 declare const FBEventsHandler: (req: NextApiRequest, res: NextApiResponse) => void;
-export default FBEventsHandler;
+export { FBEventsHandler };
