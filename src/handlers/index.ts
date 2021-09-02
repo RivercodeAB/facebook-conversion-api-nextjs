@@ -44,8 +44,8 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
   const FBConversionAPI = new FacebookConversionAPI(
     process.env.FB_ACCESS_TOKEN,
     process.env.FB_PIXEL_ID,
-    emails,
-    phones,
+    emails ?? null,
+    phones ?? null,
     clientIpAddress(req),
     clientUserAgent(req),
     '',
