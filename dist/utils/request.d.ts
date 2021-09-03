@@ -17,4 +17,19 @@ declare const clientIpAddress: (req: NextApiRequest) => string;
  * @param req
  */
 declare const clientUserAgent: (req: NextApiRequest) => string;
-export { clientRefererUrl, clientIpAddress, clientUserAgent };
+/**
+ * Get client FBP from cookie. Return null if cookie is not provided
+ *
+ * @param req
+ */
+declare const clientFbpCookie: (req: NextApiRequest) => string | null;
+/**
+ * Return users FBC cookie from fbclid.
+ * If fbclid is not provided in req.headers.referer, get value from cookie.
+ * else return null
+ *
+ * @param req
+ * @returns
+ */
+declare const clientFbcCookie: (req: NextApiRequest) => string | null;
+export { clientRefererUrl, clientIpAddress, clientUserAgent, clientFbpCookie, clientFbcCookie };

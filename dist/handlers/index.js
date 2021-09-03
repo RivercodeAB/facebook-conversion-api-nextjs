@@ -31,7 +31,7 @@ const FBEventsHandler = (req, res) => {
             error: 'The request body is missing required parameters',
         });
     }
-    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails !== null && emails !== void 0 ? emails : null, phones !== null && phones !== void 0 ? phones : null, (0, request_1.clientIpAddress)(req), (0, request_1.clientUserAgent)(req), '', '', debug);
+    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.FB_PIXEL_ID, emails !== null && emails !== void 0 ? emails : null, phones !== null && phones !== void 0 ? phones : null, (0, request_1.clientIpAddress)(req), (0, request_1.clientUserAgent)(req), (0, request_1.clientFbpCookie)(req), (0, request_1.clientFbcCookie)(req), debug);
     products.forEach((product) => {
         FBConversionAPI.addProduct(product.sku, product.quantity);
     });

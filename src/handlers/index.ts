@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
-import { clientRefererUrl, clientIpAddress, clientUserAgent } from '../utils/request';
+import { clientRefererUrl, clientIpAddress, clientUserAgent, clientFbpCookie, clientFbcCookie } from '../utils/request';
 import FBEventType from '../../types';
 
 /**
@@ -48,8 +48,8 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     phones ?? null,
     clientIpAddress(req),
     clientUserAgent(req),
-    '',
-    '',
+    clientFbpCookie(req),
+    clientFbcCookie(req),
     debug,
   );
 
