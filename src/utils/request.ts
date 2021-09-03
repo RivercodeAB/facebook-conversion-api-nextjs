@@ -26,6 +26,7 @@ const clientUserAgent = (req: NextApiRequest) => String(req.headers['user-agent'
  * Get client FBP from cookie. Return null if cookie is not provided
  * 
  * @param req 
+ * @returns If fbp cookie exists, return the cookie else null
  */
 const clientFbpCookie = (req: NextApiRequest): string | null => {
   const cookies = new Cookies(req.headers.cookie)
@@ -43,7 +44,7 @@ const clientFbpCookie = (req: NextApiRequest): string | null => {
  * else return null
  * 
  * @param req 
- * @returns 
+ * @returns If either fbclid or cookie exist then return the fbc, else null
  */
 const clientFbcCookie = (req: NextApiRequest): string | null => {
   if (req.headers.referer) {
