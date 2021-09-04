@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
-import { clientRefererUrl, clientIpAddress, clientUserAgent } from '../utils/request';
+import {
+  getClientRefererUrl,
+  getClientIpAddress,
+  getClientUserAgent,
+  getClientFbp,
+  getClientFbc,
+} from '../utils/request';
 import FBEventType from '../../types';
 
 /**
@@ -27,6 +33,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
 
   const {
     eventName,
+    eventId,
     emails,
     phones,
     products,
@@ -46,10 +53,10 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     process.env.FB_PIXEL_ID,
     emails ?? null,
     phones ?? null,
-    clientIpAddress(req),
-    clientUserAgent(req),
-    '',
-    '',
+    getClientIpAddress(req),
+    getClientUserAgent(req),
+    getClientFbp(req),
+    getClientFbc(req),
     debug,
   );
 
@@ -57,7 +64,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     FBConversionAPI.addProduct(product.sku, product.quantity);
   });
 
-  FBConversionAPI.sendEvent(eventName, clientRefererUrl(req), { value, currency });
+  FBConversionAPI.sendEvent(eventName, getClientRefererUrl(req), { value, currency }, { eventId });
 
   return res.status(200).json({
     status: 'Success',

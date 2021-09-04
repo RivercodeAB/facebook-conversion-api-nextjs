@@ -31,6 +31,7 @@ import { FBEvent } from '@rivercode/facebook-conversion-api-nextjs';
 
 FBEvent({
   eventName: 'ViewContent', // ViewContent, AddToCart, InitiateCheckout or Purchase
+  eventId: 'eventId', // optional
   emails: ['email1', 'email2'], // optional
   phones: ['phone1', 'phone2'], // optional
   products: [{
