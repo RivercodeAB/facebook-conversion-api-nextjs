@@ -13,7 +13,7 @@ const getClientRefererUrl = (req: NextApiRequest) => String(req.headers.referer 
  *
  * @param req
  */
-const getClientIpaddress = (req: NextApiRequest) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
+const getClientIpAddress = (req: NextApiRequest) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
 
 /**
  * Get client user agent from request.
@@ -62,7 +62,7 @@ const getClientFbc = (req: NextApiRequest) => {
 
 export {
   getClientRefererUrl,
-  getClientIpaddress,
+  getClientIpAddress,
   getClientUserAgent,
   getClientFbp,
   getClientFbc,

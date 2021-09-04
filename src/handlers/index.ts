@@ -2,9 +2,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
 import {
   getClientRefererUrl,
-  getClientIpaddress,
+  getClientIpAddress,
   getClientUserAgent,
-  getClientFbp, getClientFbc,
+  getClientFbp,
+  getClientFbc,
 } from '../utils/request';
 import FBEventType from '../../types';
 
@@ -52,7 +53,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     process.env.FB_PIXEL_ID,
     emails ?? null,
     phones ?? null,
-    getClientIpaddress(req),
+    getClientIpAddress(req),
     getClientUserAgent(req),
     getClientFbp(req),
     getClientFbc(req),

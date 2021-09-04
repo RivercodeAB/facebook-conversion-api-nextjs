@@ -10,7 +10,7 @@ declare const getClientRefererUrl: (req: NextApiRequest) => string;
  *
  * @param req
  */
-declare const getClientIpaddress: (req: NextApiRequest) => string;
+declare const getClientIpAddress: (req: NextApiRequest) => string;
 /**
  * Get client user agent from request.
  *
@@ -29,4 +29,4 @@ declare const getClientFbp: (req: NextApiRequest) => any;
  * @param req
  */
 declare const getClientFbc: (req: NextApiRequest) => any;
-export { getClientRefererUrl, getClientIpaddress, getClientUserAgent, getClientFbp, getClientFbc, };
+export { getClientRefererUrl, getClientIpAddress, getClientUserAgent, getClientFbp, getClientFbc, };

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getClientFbc = exports.getClientFbp = exports.getClientUserAgent = exports.getClientIpaddress = exports.getClientRefererUrl = void 0;
+exports.getClientFbc = exports.getClientFbp = exports.getClientUserAgent = exports.getClientIpAddress = exports.getClientRefererUrl = void 0;
 const universal_cookie_1 = __importDefault(require("universal-cookie"));
 /**
  * Get client referer URL from request.
@@ -17,8 +17,8 @@ exports.getClientRefererUrl = getClientRefererUrl;
  *
  * @param req
  */
-const getClientIpaddress = (req) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
-exports.getClientIpaddress = getClientIpaddress;
+const getClientIpAddress = (req) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
+exports.getClientIpAddress = getClientIpAddress;
 /**
  * Get client user agent from request.
  *
