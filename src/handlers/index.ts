@@ -27,8 +27,8 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     throw new Error('Missing FB_ACCESS_TOKEN in environment file.');
   }
 
-  if (!process.env.FB_PIXEL_ID) {
-    throw new Error('Missing FB_PIXEL_ID in environment file.');
+  if (!process.env.NEXT_PUBLIC_FB_PIXEL_ID) {
+    throw new Error('Missing NEXT_PUBLIC_FB_PIXEL_ID in environment file.');
   }
 
   const {
@@ -50,7 +50,7 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
 
   const FBConversionAPI = new FacebookConversionAPI(
     process.env.FB_ACCESS_TOKEN,
-    process.env.FB_PIXEL_ID,
+    process.env.NEXT_PUBLIC_FB_PIXEL_ID,
     emails ?? null,
     phones ?? null,
     getClientIpAddress(req),

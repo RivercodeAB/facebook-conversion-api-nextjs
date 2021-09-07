@@ -1,4 +1,19 @@
 import FBEventType from '../types';
+declare global {
+    interface Window {
+        fbq: any;
+    }
+}
+/**
+ * Init standard Facebook Pixel.
+ * @constructor
+ */
+declare const FBInit: () => void;
+/**
+ * Page View event for standard Facebook Pixel.
+ * @constructor
+ */
+declare const FBPageView: () => void;
 /**
  * Post Facebook Conversion API Event to API endpoint.
  *
@@ -6,4 +21,4 @@ import FBEventType from '../types';
  * @constructor
  */
 declare const FBEvent: (event: FBEventType) => void;
-export { FBEvent };
+export { FBInit, FBPageView, FBEvent };

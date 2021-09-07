@@ -25,7 +25,32 @@ FB_PIXEL_ID=pixelID
 
 Read more here on how you can get your [access token](https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#access-token) and [pixel id](https://www.facebook.com/business/help/952192354843755?id=1205376682832142).
 
-## 2. Start Sending Events
+## 2. Init Facebook Pixel (Optional)
+This is only needed if you want to fire standard Pixel Events.
+```jsx
+import { FBInit, FBPageView } from '@rivercode/facebook-conversion-api-nextjs';
+
+// First page load
+useEffect(() => {
+  FBInit();
+  
+  // This prevent the pixel from firing multiple times
+  // when the url contains query parameters
+  if (!router.asPath.includes('?')) {
+    FBPageView();
+  }
+}, []);
+
+// Listen for route changes
+useEffect(() => {
+  router.events.on('routeChangeComplete', FBPageView());
+  return () => {
+    router.events.off('routeChangeComplete', FBPageView());
+  }
+}, [router.events]);
+```
+
+## 3. Start Sending Events
 ```jsx
 import { FBEvent } from '@rivercode/facebook-conversion-api-nextjs';
 
@@ -40,6 +65,7 @@ FBEvent({
   }],
   value: 1000,
   currency: 'USD',
+  enablePixelEvents: true, // default false (Require Facebook Pixel to be loaded, see step 2)
   debug: true // default false
 });
 ```
