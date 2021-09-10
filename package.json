@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api-nextjs#readme",
   "dependencies": {
-    "@rivercode/facebook-conversion-api": "^1.1.6",
+    "@rivercode/facebook-conversion-api": "^1.1.7",
     "universal-cookie": "^4.0.4"
   },
   "peerDependencies": {

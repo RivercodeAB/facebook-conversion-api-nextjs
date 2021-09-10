@@ -39,7 +39,6 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     products,
     value,
     currency,
-    debug,
   } = req.body as FBEventType;
 
   if (!eventName || !products || products?.length < 1) {
@@ -57,7 +56,7 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     getClientUserAgent(req),
     getClientFbp(req),
     getClientFbc(req),
-    debug,
+    (process.env.NEXT_PUBLIC_FB_DEBUG === 'true'),
   );
 
   products.forEach((product) => {
