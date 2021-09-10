@@ -5,14 +5,15 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
+    "allowJs": true,
+    "jsx": "react",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "declaration": true,
   },
   "include": [
-    "./src",
-    "./types",
-    "./.eslintrc.js",
+    "./src/**/*",
+    "./types/**/*",
   ],
   "exclude": [
     "./node_modules",
