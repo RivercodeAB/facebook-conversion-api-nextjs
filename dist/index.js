@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fbPageView = exports.fbEvent = void 0;
+const uuid_1 = require("uuid");
 const debug_1 = __importDefault(require("./utils/debug"));
 /**
  * Trigger Facebook PageView Event (Standard Pixel).
@@ -22,6 +23,7 @@ exports.fbPageView = fbPageView;
  * @constructor
  */
 const fbEvent = (event) => {
+    const eventId = event.eventId ? event.eventId : (0, uuid_1.v4)();
     setTimeout(() => {
         if (event.enableStandardPixel) {
             window.fbq('track', event.eventName, {
@@ -29,7 +31,7 @@ const fbEvent = (event) => {
                 content_ids: event.products.map((product) => product.sku),
                 value: event.value,
                 currency: event.currency,
-            }, ((event === null || event === void 0 ? void 0 : event.eventId) && { eventID: event.eventId }));
+            }, { eventID: eventId });
             (0, debug_1.default)(`Client Side Event: ${event.eventName}`);
         }
         fetch('/api/fb-events', {
@@ -37,7 +39,15 @@ const fbEvent = (event) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(event),
+            body: JSON.stringify({
+                eventName: event.eventName,
+                eventId,
+                emails: event.emails,
+                phones: event.phones,
+                products: event.products,
+                value: event.value,
+                currency: event.currency,
+            }),
         }).then((response) => {
             (0, debug_1.default)(`Server Side Event: ${event.eventName} (${response.status})`);
         }).catch((error) => {
