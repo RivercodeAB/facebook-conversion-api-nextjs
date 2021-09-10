@@ -9,7 +9,7 @@ type FBEventType = {
   }[]
   value?: number
   currency?: string
-  enableStandardPixel: boolean
+  enableStandardPixel?: boolean
   debug: boolean
 };
 

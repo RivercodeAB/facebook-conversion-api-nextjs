@@ -1,5 +1,4 @@
 import FBEventType from '../types';
-import loadFBPixel from './utils/fb-pixel';
 
 declare global {
   interface Window {
@@ -8,52 +7,49 @@ declare global {
 }
 
 /**
- * Init standard Facebook Pixel.
+ * Trigger Facebook PageView Event (Standard Pixel).
  * @constructor
  */
-const FBInit = (): void => {
-  if (!process.env.NEXT_PUBLIC_FB_PIXEL_ID) {
-    console.log('Missing NEXT_PUBLIC_FACEBOOK_PIXEL_ID in environment file.');
-    return;
-  }
-
-  loadFBPixel();
-
-  window.fbq('init', process.env.NEXT_PUBLIC_FB_PIXEL_ID);
-};
-
-/**
- * Page View event for standard Facebook Pixel.
- * @constructor
- */
-const FBPageView = (): void => {
+const fbPageView = (): void => {
   window.fbq('track', 'PageView');
 };
 
 /**
- * Post Facebook Conversion API Event to API endpoint.
+ * Post Facebook Conversion API Event to API endpoint (API and optionally Standard Pixel).
  *
  * @param event
  * @constructor
  */
-const FBEvent = (event: FBEventType): void => {
+const fbEvent = (event: FBEventType): void => {
+  if (event.debug) {
+    console.log('--------------------------------');
+    console.log('Facebook Conversion API');
+    console.log('--------------------------------');
+  }
+
+  if (event.enableStandardPixel) {
+    setTimeout(() => {
+      window.fbq('track', event.eventName, {
+        content_type: 'product',
+        content_ids: event.products.map((product) => product.sku),
+        value: event.value,
+        currency: event.currency,
+      }, (event?.eventId && { eventID: event.eventId }));
+
+      if (event.debug) console.log(`Client Side Event Sent: ${event.eventName}`);
+    }, 250);
+  }
+
   fetch('/api/fb-events', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(event),
+  }).then((response) => {
+    if (event.debug) console.log(`Server Side Event Sent: ${event.eventName} (${response.status})`);
   });
-
-  if (event.enableStandardPixel) {
-    window.fbq('track', event.eventName, {
-      content_type: 'product',
-      content_ids: event.products.map((product) => product.sku),
-      value: event.value,
-      currency: event.currency,
-    });
-  }
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { FBInit, FBPageView, FBEvent };
+export { fbEvent, fbPageView };

@@ -1,1 +1,1 @@
-export * from './dist/handlers'
+export * from './dist/handlers';

@@ -16,7 +16,7 @@ import FBEventType from '../../types';
  * @param res
  * @constructor
  */
-const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
+const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(400).json({
       message: 'This route only accepts POST requests',
@@ -72,4 +72,4 @@ const FBEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export { FBEventsHandler };
+export { fbEventsHandler };

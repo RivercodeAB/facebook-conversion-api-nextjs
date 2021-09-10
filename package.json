@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./handlers": "./dist/handlers/index.js"
+    "./handlers": "./dist/handlers/index.js",
+    "./components": "./dist/components/index.js"
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
@@ -23,8 +24,13 @@
   },
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api-nextjs#readme",
   "dependencies": {
-    "@rivercode/facebook-conversion-api": "^1.1.5",
+    "@rivercode/facebook-conversion-api": "^1.1.6",
     "universal-cookie": "^4.0.4"
+  },
+  "peerDependencies": {
+    "next": "10 || 11",
+    "react": "^16 || ^17",
+    "react-dom": "^16 || ^17"
   },
   "devDependencies": {
     "@types/node": "^16.7.13",
@@ -40,6 +46,8 @@
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "next": "11.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "typescript": "^4.3.5"
   },
   "keywords": [

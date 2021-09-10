@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "commonjs",
     "allowJs": true,
+    "jsx": "react",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
@@ -11,8 +12,8 @@
     "declaration": true,
   },
   "include": [
-    "./src",
-    "./types",
+    "./src/**/*",
+    "./types/**/*",
   ],
   "exclude": [
     "./node_modules",
