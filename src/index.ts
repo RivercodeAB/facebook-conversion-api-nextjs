@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import FBEventType from '../types';
 import debug from './utils/debug';
 
@@ -25,6 +26,8 @@ const fbPageView = (): void => {
  * @constructor
  */
 const fbEvent = (event: FBEventType): void => {
+  const eventId = event.eventId ? event.eventId : uuidv4();
+
   setTimeout(() => {
     if (event.enableStandardPixel) {
       window.fbq('track', event.eventName, {
@@ -32,7 +35,7 @@ const fbEvent = (event: FBEventType): void => {
         content_ids: event.products.map((product) => product.sku),
         value: event.value,
         currency: event.currency,
-      }, (event?.eventId && { eventID: event.eventId }));
+      }, { eventID: eventId });
 
       debug(`Client Side Event: ${event.eventName}`);
     }
@@ -42,7 +45,15 @@ const fbEvent = (event: FBEventType): void => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(event),
+      body: JSON.stringify({
+        eventName: event.eventName,
+        eventId,
+        emails: event.emails,
+        phones: event.phones,
+        products: event.products,
+        value: event.value,
+        currency: event.currency,
+      }),
     }).then((response) => {
       debug(`Server Side Event: ${event.eventName} (${response.status})`);
     }).catch((error) => {
