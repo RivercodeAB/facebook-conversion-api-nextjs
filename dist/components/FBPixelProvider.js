@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = require("react");
 const router_1 = require("next/router");
 const index_1 = require("../index");
-const FBPixelWrapper = ({ children }) => {
+const FBPixelProvider = ({ children }) => {
     const router = (0, router_1.useRouter)();
     (0, react_1.useEffect)(() => {
         if (!router.asPath.includes('?')) {
@@ -16,4 +16,4 @@ const FBPixelWrapper = ({ children }) => {
     }, [router.events]);
     return children;
 };
-exports.default = FBPixelWrapper;
+exports.default = FBPixelProvider;
