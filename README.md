@@ -42,11 +42,11 @@ import { FBPixelScript } from '@rivercode/facebook-conversion-api-nextjs/compone
 ### Add Facebook Pixel Wrapper
 pages/_app.js
 ```jsx
-import { FBPixelWrapper } from '@rivercode/facebook-conversion-api-nextjs/components';
+import { FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
 
-<FBPixelWrapper>
+<FBPixelProvider>
   <Component {...pageProps} />
-</FBPixelWrapper>
+</FBPixelProvider>
 ```
 
 ## 3. Start Sending Events

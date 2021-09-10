@@ -6,7 +6,7 @@ type Props = {
   children: JSX.Element
 };
 
-const FBPixelWrapper: React.FC<Props> = ({ children }) => {
+const FBPixelProvider: React.FC<Props> = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const FBPixelWrapper: React.FC<Props> = ({ children }) => {
   return children;
 };
 
-export default FBPixelWrapper;
+export default FBPixelProvider;

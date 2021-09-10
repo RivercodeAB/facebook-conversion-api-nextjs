@@ -1,4 +1,4 @@
 import FBPixelScript from './FBPixelScript';
-import FBPixelWrapper from './FBPixelWrapper';
+import FBPixelProvider from './FBPixelProvider';
 
-export { FBPixelScript, FBPixelWrapper };
+export { FBPixelScript, FBPixelProvider };
