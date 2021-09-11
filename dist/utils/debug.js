@@ -11,9 +11,9 @@ exports.default = (message) => {
         return;
     }
     if (!initialized) {
-        console.log('--------------------------------');
+        console.log('------------------------------------');
         console.log('Facebook Conversion API Debugging');
-        console.log('--------------------------------');
+        console.log('------------------------------------');
     }
     initialized = true;
     if (message)
