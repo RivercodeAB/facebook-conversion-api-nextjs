@@ -11,9 +11,9 @@ export default (message: string | null): void => {
   }
 
   if (!initialized) {
-    console.log('--------------------------------');
+    console.log('------------------------------------');
     console.log('Facebook Conversion API Debugging');
-    console.log('--------------------------------');
+    console.log('------------------------------------');
   }
 
   initialized = true;

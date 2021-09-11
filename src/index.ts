@@ -32,7 +32,9 @@ const fbEvent = (event: FBEventType): void => {
     if (event.enableStandardPixel) {
       window.fbq('track', event.eventName, {
         content_type: 'product',
-        content_ids: event.products.map((product) => product.sku),
+        contents: event.products.map((product) => (
+          { id: product.sku, quantity: product.quantity }
+        )),
         value: event.value,
         currency: event.currency,
       }, { eventID: eventId });
