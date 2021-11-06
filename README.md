@@ -2,10 +2,25 @@ Facebook Conversion API for Next.js
 
 > Next.js wrapper for [Facebook's Conversion API](https://developers.facebook.com/docs/marketing-api/conversions-api/)
 
+# Facebook Conversion API for Next.js
+This package helps you implement Facebook Conversion API in Next.js.
+
+It includes an API route handler for sending server-side events to Facebook and client-side functions to trigger the events.
+
+Facebook recommends sending events with Facebook Pixel and the Conversion API with the same event id to match duplicated events.
+
+Therefore, we have added the option to enable standard Facebook Pixel events in this package, where we handle duplicated events out of the box.
+
 ## Install
 
+NPM
 ```bash
 npm install @rivercode/facebook-conversion-api-nextjs
+```
+
+Yarn
+```bash
+yarn add @rivercode/facebook-conversion-api-nextjs
 ```
 
 ## 1. Create Next.js API Route
@@ -30,13 +45,17 @@ Read more here on how you can get your [access token](https://developers.faceboo
 This is only needed if you want to fire standard Pixel Events.
 
 ### Add Facebook Pixel Script
+Read more about custom [_document.js in Next.js](https://nextjs.org/docs/advanced-features/custom-document).
+
 pages/_document.js
 ```jsx
 import { FBPixelScript } from '@rivercode/facebook-conversion-api-nextjs/components';
 
+...
 <Head>
   <FBPixelScript />
 </Head>
+...
 ```
 
 ### Add Facebook Pixel Wrapper
@@ -44,12 +63,15 @@ pages/_app.js
 ```jsx
 import { FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
 
+...
 <FBPixelProvider>
   <Component {...pageProps} />
 </FBPixelProvider>
+...
 ```
 
 ## 3. Start Sending Events
+Trigger the events you need. For example, add to cart or purchase events.
 ```jsx
 import { fbEvent } from '@rivercode/facebook-conversion-api-nextjs';
 
@@ -64,6 +86,6 @@ fbEvent({
   }],
   value: 1000, // optional
   currency: 'USD', // optional
-  enableStandardPixel: true // default false (Require Facebook Pixel to be loaded, see step 2)
+  enableStandardPixel: false // default false (Require Facebook Pixel to be loaded, see step 2)
 });
 ```
