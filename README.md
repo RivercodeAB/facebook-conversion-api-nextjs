@@ -58,7 +58,7 @@ import { FBPixelScript } from '@rivercode/facebook-conversion-api-nextjs/compone
 ...
 ```
 
-### Add Facebook Pixel Wrapper
+### Add Facebook Pixel Provider
 pages/_app.js
 ```jsx
 import { FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
