@@ -18,7 +18,7 @@ const FBPixelScript = () => (
       }}
     />
     <noscript>
-      <img height="1" width="1" alt="FB Pixel" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=1724438047628884&ev=PageView&noscript=1" />
+      <img height="1" width="1" alt="FB Pixel" style={{ display: 'none' }} src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_PIXEL_ID}&ev=PageView&noscript=1`} />
     </noscript>
   </>
 );
