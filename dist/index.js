@@ -25,7 +25,7 @@ exports.fbPageView = fbPageView;
 const fbEvent = (event) => {
     const eventId = event.eventId ? event.eventId : (0, uuid_1.v4)();
     setTimeout(() => {
-        if (event.enableStandardPixel) {
+        if (typeof window !== "undefined" && event.enableStandardPixel) {
             window.fbq('track', event.eventName, {
                 content_type: 'product',
                 contents: event.products.map((product) => ({ id: product.sku, quantity: product.quantity })),

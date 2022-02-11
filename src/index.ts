@@ -29,7 +29,7 @@ const fbEvent = (event: FBEventType): void => {
   const eventId = event.eventId ? event.eventId : uuidv4();
 
   setTimeout(() => {
-    if (event.enableStandardPixel) {
+    if (typeof window !== "undefined" && event.enableStandardPixel) {
       window.fbq('track', event.eventName, {
         content_type: 'product',
         contents: event.products.map((product) => (
