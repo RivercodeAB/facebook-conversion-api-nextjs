@@ -19,5 +19,5 @@ const FBPixelScript = () => (react_1.default.createElement(react_1.default.Fragm
         `,
         } }),
     react_1.default.createElement("noscript", null,
-        react_1.default.createElement("img", { height: "1", width: "1", alt: "FB Pixel", style: { display: 'none' }, src: "https://www.facebook.com/tr?id=1724438047628884&ev=PageView&noscript=1" }))));
+        react_1.default.createElement("img", { height: "1", width: "1", alt: "FB Pixel", style: { display: 'none' }, src: `https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_PIXEL_ID}&ev=PageView&noscript=1` }))));
 exports.default = FBPixelScript;

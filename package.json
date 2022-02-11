@@ -11,7 +11,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --build"
   },
   "repository": {
     "type": "git",
