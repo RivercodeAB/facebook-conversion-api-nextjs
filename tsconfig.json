@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es6",
     "module": "commonjs",
     "outDir": "./dist",
@@ -16,6 +17,7 @@
     "./types/**/*",
   ],
   "exclude": [
+    "./dist",
     "./node_modules",
   ]
 }

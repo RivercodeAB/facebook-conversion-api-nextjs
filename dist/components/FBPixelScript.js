@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
+const script_1 = __importDefault(require("next/script"));
 const FBPixelScript = () => (react_1.default.createElement(react_1.default.Fragment, null,
-    react_1.default.createElement("script", { dangerouslySetInnerHTML: {
+    react_1.default.createElement(script_1.default, { strategy: "afterInteractive", dangerouslySetInnerHTML: {
             __html: `
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -17,7 +18,5 @@ const FBPixelScript = () => (react_1.default.createElement(react_1.default.Fragm
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');
         `,
-        } }),
-    react_1.default.createElement("noscript", null,
-        react_1.default.createElement("img", { height: "1", width: "1", alt: "FB Pixel", style: { display: 'none' }, src: "https://www.facebook.com/tr?id=1724438047628884&ev=PageView&noscript=1" }))));
+        } })));
 exports.default = FBPixelScript;

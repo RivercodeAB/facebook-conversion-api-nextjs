@@ -1,8 +1,10 @@
 import React from 'react';
+import Script from 'next/script';
 
 const FBPixelScript = () => (
   <>
-    <script
+    <Script
+      strategy="afterInteractive"
       dangerouslySetInnerHTML={{
         __html: `
           !function(f,b,e,v,n,t,s)
@@ -17,9 +19,6 @@ const FBPixelScript = () => (
         `,
       }}
     />
-    <noscript>
-      <img height="1" width="1" alt="FB Pixel" style={{ display: 'none' }} src="https://www.facebook.com/tr?id=1724438047628884&ev=PageView&noscript=1" />
-    </noscript>
   </>
 );
 

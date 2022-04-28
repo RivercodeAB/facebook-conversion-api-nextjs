@@ -44,26 +44,13 @@ Read more here on how you can get your [access token](https://developers.faceboo
 ## 2. Load Facebook Pixel (Optional)
 This is only needed if you want to fire standard Pixel Events.
 
-### Add Facebook Pixel Script
-Read more about custom [_document.js in Next.js](https://nextjs.org/docs/advanced-features/custom-document).
-
-pages/_document.js
-```jsx
-import { FBPixelScript } from '@rivercode/facebook-conversion-api-nextjs/components';
-
-...
-<Head>
-  <FBPixelScript />
-</Head>
-...
-```
-
-### Add Facebook Pixel Provider
+### Add Facebook Pixel Provider & Script
 pages/_app.js
 ```jsx
-import { FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
+import { FBPixelScript, FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
 
 ...
+<FBPixelScript />
 <FBPixelProvider>
   <Component {...pageProps} />
 </FBPixelProvider>

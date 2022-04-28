@@ -1,6 +1,6 @@
 {
   "name": "@rivercode/facebook-conversion-api-nextjs",
-  "version": "2.0.6",
+  "version": "3.0.0",
   "description": "Facebook Conversion API for Next.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,9 @@
   },
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "lint:tsc": "tsc",
+    "watch": "tsc --watch",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,33 +27,33 @@
   },
   "homepage": "https://github.com/RivercodeAB/facebook-conversion-api-nextjs#readme",
   "dependencies": {
-    "@rivercode/facebook-conversion-api": "^1.1.7",
+    "@rivercode/facebook-conversion-api": "^1.1.8",
     "universal-cookie": "^4.0.4",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "next": "^10 || ^11 || ^12",
+    "next": "^11 || ^12",
     "react": "^16 || ^17",
     "react-dom": "^16 || ^17"
   },
   "devDependencies": {
-    "@types/node": "^16.7.13",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^17.0.9",
-    "@types/uuid": "^8.3.1",
+    "@types/node": "^16.11.31",
+    "@types/react": "^17.0.44",
+    "@types/react-dom": "^17.0.16",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "next": "11.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.3.5"
+    "typescript": "^4.6.3"
   },
   "keywords": [
     "facebook-conversion-api",
