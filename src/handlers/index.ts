@@ -38,8 +38,11 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     products,
     value,
     currency,
-    userAgent,
   } = req.body as FBEventType;
+
+  const { userAgent } = req.body as {
+    userAgent: string
+  };
 
   if (!eventName || !products || products?.length < 1) {
     return res.status(400).json({

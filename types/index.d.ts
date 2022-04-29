@@ -10,7 +10,6 @@ type FBEventType = {
   value?: number
   currency?: string
   enableStandardPixel?: boolean
-  userAgent: string
 };
 
 export default FBEventType;
