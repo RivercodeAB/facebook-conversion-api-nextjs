@@ -14,15 +14,15 @@ const getClientRefererUrl = (req: NextApiRequest) => String(req.headers.referer 
  * @param req
  */
 const getClientIpAddress = (req: NextApiRequest) => {
-  const xForwardedFor = req.headers['x-forwarded-for'] as string;
+  const ipAddress = (req.headers['x-real-ip'] || req.connection.remoteAddress);
 
-  if (xForwardedFor) {
-    return xForwardedFor.split(',')[0];
+  if (ipAddress) {
+    return String(ipAddress);
   }
 
-  const ipAddress = (req.headers['x-real-ip'] || req.connection.remoteAddress) ?? '';
+  const xForwardedFor = req.headers['x-forwarded-for'] as string ?? '';
 
-  return String(ipAddress);
+  return xForwardedFor.split(',')[0];
 };
 
 /**

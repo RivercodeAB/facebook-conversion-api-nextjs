@@ -19,12 +19,12 @@ exports.getClientRefererUrl = getClientRefererUrl;
  */
 const getClientIpAddress = (req) => {
     var _a;
-    const xForwardedFor = req.headers['x-forwarded-for'];
-    if (xForwardedFor) {
-        return xForwardedFor.split(',')[0];
+    const ipAddress = (req.headers['x-real-ip'] || req.connection.remoteAddress);
+    if (ipAddress) {
+        return String(ipAddress);
     }
-    const ipAddress = (_a = (req.headers['x-real-ip'] || req.connection.remoteAddress)) !== null && _a !== void 0 ? _a : '';
-    return String(ipAddress);
+    const xForwardedFor = (_a = req.headers['x-forwarded-for']) !== null && _a !== void 0 ? _a : '';
+    return xForwardedFor.split(',')[0];
 };
 exports.getClientIpAddress = getClientIpAddress;
 /**

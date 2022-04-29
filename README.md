@@ -11,6 +11,8 @@ Facebook recommends sending events with Facebook Pixel and the Conversion API wi
 
 Therefore, we have added the option to enable standard Facebook Pixel events in this package, where we handle duplicated events out of the box.
 
+Support Next.js API routes on both Vercel and AWS Amplify.
+
 ## Install
 
 NPM
@@ -50,10 +52,12 @@ pages/_app.js
 import { FBPixelScript, FBPixelProvider } from '@rivercode/facebook-conversion-api-nextjs/components';
 
 ...
-<FBPixelScript />
-<FBPixelProvider>
-  <Component {...pageProps} />
-</FBPixelProvider>
+<>
+  <FBPixelScript />
+  <FBPixelProvider>
+    <Component {...pageProps} />
+  </FBPixelProvider>
+</>
 ...
 ```
 
