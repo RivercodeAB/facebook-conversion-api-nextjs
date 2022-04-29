@@ -3,7 +3,6 @@ import FacebookConversionAPI from '@rivercode/facebook-conversion-api';
 import {
   getClientRefererUrl,
   getClientIpAddress,
-  getClientUserAgent,
   getClientFbp,
   getClientFbc,
 } from '../utils/request';
@@ -39,6 +38,7 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     products,
     value,
     currency,
+    userAgent,
   } = req.body as FBEventType;
 
   if (!eventName || !products || products?.length < 1) {
@@ -53,7 +53,7 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
     emails ?? null,
     phones ?? null,
     getClientIpAddress(req),
-    getClientUserAgent(req),
+    userAgent,
     getClientFbp(req),
     getClientFbc(req),
     (process.env.NEXT_PUBLIC_FB_DEBUG === 'true'),

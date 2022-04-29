@@ -25,13 +25,13 @@ const fbEventsHandler = (req, res) => {
     if (!process.env.NEXT_PUBLIC_FB_PIXEL_ID) {
         throw new Error('Missing NEXT_PUBLIC_FB_PIXEL_ID in environment file.');
     }
-    const { eventName, eventId, emails, phones, products, value, currency, } = req.body;
+    const { eventName, eventId, emails, phones, products, value, currency, userAgent, } = req.body;
     if (!eventName || !products || (products === null || products === void 0 ? void 0 : products.length) < 1) {
         return res.status(400).json({
             error: 'The request body is missing required parameters',
         });
     }
-    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.NEXT_PUBLIC_FB_PIXEL_ID, emails !== null && emails !== void 0 ? emails : null, phones !== null && phones !== void 0 ? phones : null, (0, request_1.getClientIpAddress)(req), (0, request_1.getClientUserAgent)(req), (0, request_1.getClientFbp)(req), (0, request_1.getClientFbc)(req), (process.env.NEXT_PUBLIC_FB_DEBUG === 'true'));
+    const FBConversionAPI = new facebook_conversion_api_1.default(process.env.FB_ACCESS_TOKEN, process.env.NEXT_PUBLIC_FB_PIXEL_ID, emails !== null && emails !== void 0 ? emails : null, phones !== null && phones !== void 0 ? phones : null, (0, request_1.getClientIpAddress)(req), userAgent, (0, request_1.getClientFbp)(req), (0, request_1.getClientFbc)(req), (process.env.NEXT_PUBLIC_FB_DEBUG === 'true'));
     products.forEach((product) => {
         FBConversionAPI.addProduct(product.sku, product.quantity);
     });

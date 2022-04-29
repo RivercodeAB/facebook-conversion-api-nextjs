@@ -55,6 +55,7 @@ const fbEvent = (event: FBEventType): void => {
         products: event.products,
         value: event.value,
         currency: event.currency,
+        userAgent: navigator.userAgent,
       }),
     }).then((response) => {
       debug(`Server Side Event: ${event.eventName} (${response.status})`);

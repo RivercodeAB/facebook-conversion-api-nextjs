@@ -17,7 +17,15 @@ exports.getClientRefererUrl = getClientRefererUrl;
  *
  * @param req
  */
-const getClientIpAddress = (req) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
+const getClientIpAddress = (req) => {
+    var _a;
+    const xForwardedFor = req.headers['x-forwarded-for'];
+    if (xForwardedFor) {
+        return xForwardedFor.split(',')[0];
+    }
+    const ipAddress = (_a = (req.headers['x-real-ip'] || req.connection.remoteAddress)) !== null && _a !== void 0 ? _a : '';
+    return String(ipAddress);
+};
 exports.getClientIpAddress = getClientIpAddress;
 /**
  * Get client user agent from request.

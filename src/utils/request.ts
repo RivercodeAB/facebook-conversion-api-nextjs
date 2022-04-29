@@ -13,7 +13,17 @@ const getClientRefererUrl = (req: NextApiRequest) => String(req.headers.referer 
  *
  * @param req
  */
-const getClientIpAddress = (req: NextApiRequest) => String(req.headers['x-real-ip'] || req.connection.remoteAddress);
+const getClientIpAddress = (req: NextApiRequest) => {
+  const xForwardedFor = req.headers['x-forwarded-for'] as string;
+
+  if (xForwardedFor) {
+    return xForwardedFor.split(',')[0];
+  }
+
+  const ipAddress = (req.headers['x-real-ip'] || req.connection.remoteAddress) ?? '';
+
+  return String(ipAddress);
+};
 
 /**
  * Get client user agent from request.
