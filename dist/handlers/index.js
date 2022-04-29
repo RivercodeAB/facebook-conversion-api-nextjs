@@ -36,6 +36,22 @@ const fbEventsHandler = (req, res) => {
         FBConversionAPI.addProduct(product.sku, product.quantity);
     });
     FBConversionAPI.sendEvent(eventName, (0, request_1.getClientRefererUrl)(req), { value, currency }, { eventId });
+    if (process.env.NEXT_PUBLIC_FB_DEBUG === 'true') {
+        return res.status(200).json({
+            debug: {
+                ipAddress: (0, request_1.getClientIpAddress)(req),
+                userAgent,
+                refererUrl: (0, request_1.getClientRefererUrl)(req),
+                fbp: (0, request_1.getClientFbp)(req),
+                fbc: (0, request_1.getClientFbc)(req),
+                eventName,
+                products,
+                value,
+                currency,
+                eventId,
+            },
+        });
+    }
     return res.status(200).json({
         status: 'Success',
     });

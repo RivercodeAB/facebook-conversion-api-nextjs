@@ -65,6 +65,23 @@ const fbEventsHandler = (req: NextApiRequest, res: NextApiResponse) => {
 
   FBConversionAPI.sendEvent(eventName, getClientRefererUrl(req), { value, currency }, { eventId });
 
+  if (process.env.NEXT_PUBLIC_FB_DEBUG === 'true') {
+    return res.status(200).json({
+      debug: {
+        ipAddress: getClientIpAddress(req),
+        userAgent,
+        refererUrl: getClientRefererUrl(req),
+        fbp: getClientFbp(req),
+        fbc: getClientFbc(req),
+        eventName,
+        products,
+        value,
+        currency,
+        eventId,
+      },
+    });
+  }
+
   return res.status(200).json({
     status: 'Success',
   });
