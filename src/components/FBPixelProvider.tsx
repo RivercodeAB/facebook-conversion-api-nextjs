@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { fbPageView } from '../index';
+import { fbPageView } from '../conversion-api';
 
 type Props = {
   children: JSX.Element

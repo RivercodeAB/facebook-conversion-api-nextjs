@@ -1,11 +1,5 @@
 import type { NextApiRequest } from 'next';
 /**
- * Get client referer URL from request.
- *
- * @param req
- */
-declare const getClientRefererUrl: (req: NextApiRequest) => string;
-/**
  * Get client IP address from request.
  *
  * @param req
@@ -22,11 +16,11 @@ declare const getClientUserAgent: (req: NextApiRequest) => string;
  *
  * @param req
  */
-declare const getClientFbp: (req: NextApiRequest) => any;
+declare const getClientFbp: (req: NextApiRequest) => string;
 /**
  * Get client fbc from request query params or cookie.
  *
  * @param req
  */
-declare const getClientFbc: (req: NextApiRequest) => any;
-export { getClientRefererUrl, getClientIpAddress, getClientUserAgent, getClientFbp, getClientFbc, };
+declare const getClientFbc: (req: NextApiRequest) => string;
+export { getClientIpAddress, getClientUserAgent, getClientFbp, getClientFbc, };

@@ -2,18 +2,11 @@ import type { NextApiRequest } from 'next';
 import Cookies from 'universal-cookie';
 
 /**
- * Get client referer URL from request.
- *
- * @param req
- */
-const getClientRefererUrl = (req: NextApiRequest) => String(req.headers.referer ?? '');
-
-/**
  * Get client IP address from request.
  *
  * @param req
  */
-const getClientIpAddress = (req: NextApiRequest) => {
+const getClientIpAddress = (req: NextApiRequest): string => {
   const ipAddress = (req.headers['x-real-ip'] || req.connection.remoteAddress);
 
   if (ipAddress) {
@@ -30,18 +23,18 @@ const getClientIpAddress = (req: NextApiRequest) => {
  *
  * @param req
  */
-const getClientUserAgent = (req: NextApiRequest) => String(req.headers['user-agent'] ?? '');
+const getClientUserAgent = (req: NextApiRequest): string => String(req.headers['user-agent'] ?? '');
 
 /**
  * Get client fbp from request cookie.
  *
  * @param req
  */
-const getClientFbp = (req: NextApiRequest) => {
+const getClientFbp = (req: NextApiRequest): string => {
   const cookies = new Cookies(req.headers.cookie);
 
   if (!cookies.get('_fbp')) {
-    return null;
+    return '';
   }
 
   return cookies.get('_fbp');
@@ -52,12 +45,12 @@ const getClientFbp = (req: NextApiRequest) => {
  *
  * @param req
  */
-const getClientFbc = (req: NextApiRequest) => {
+const getClientFbc = (req: NextApiRequest): string => {
   if (req.headers.referer) {
     const url = new URL(req.headers.referer);
 
     if (url.searchParams.has('fbclid')) {
-      return url.searchParams.get('fbclid');
+      return url.searchParams.get('fbclid') ?? '';
     }
   }
 
@@ -67,11 +60,10 @@ const getClientFbc = (req: NextApiRequest) => {
     return cookies.get('_fbc');
   }
 
-  return null;
+  return '';
 };
 
 export {
-  getClientRefererUrl,
   getClientIpAddress,
   getClientUserAgent,
   getClientFbp,
