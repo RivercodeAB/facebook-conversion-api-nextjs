@@ -2,6 +2,23 @@ import FormData from 'form-data';
 import graphApi from '../../api/graph';
 import { Arguments, Response } from './server-side-events.types';
 
+/**
+ * Send server side event to Facebook Graph API.
+ *
+ * @param eventName
+ * @param eventId
+ * @param emails
+ * @param phones
+ * @param products
+ * @param value
+ * @param currency
+ * @param fbc
+ * @param fbp
+ * @param ipAddress
+ * @param userAgent
+ * @param sourceUrl
+ * @constructor
+ */
 const sendServerSideEvent = async ({
   eventName,
   eventId,

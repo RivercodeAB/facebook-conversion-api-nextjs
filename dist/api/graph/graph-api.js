@@ -9,6 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Facebook Graph API client.
+ *
+ * @param endpoint
+ * @param body
+ * @constructor
+ */
 const graphApi = ({ endpoint = '', body = null }) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const pixelId = (_a = process.env.NEXT_PUBLIC_FB_PIXEL_ID) !== null && _a !== void 0 ? _a : '';

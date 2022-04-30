@@ -1,5 +1,12 @@
 import { Arguments } from './graph-api.types';
 
+/**
+ * Facebook Graph API client.
+ *
+ * @param endpoint
+ * @param body
+ * @constructor
+ */
 const graphApi = async <T>({ endpoint = '', body = null }: Arguments): Promise<T> => {
   const pixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? '';
 
