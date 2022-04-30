@@ -1,6 +1,6 @@
 import { Arguments, Response } from './server-side-events.types';
 /**
- * Send server side events to Facebook Graph API.
+ * Send server side event to Facebook Graph API.
  *
  * @param eventName
  * @param eventId

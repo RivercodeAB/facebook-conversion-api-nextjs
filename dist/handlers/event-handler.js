@@ -52,7 +52,7 @@ const eventHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         sourceUrl,
     };
     const response = yield (0, server_side_events_1.sendServerSideEvent)(payload);
-    const success = (_a = (response === null || response === void 0 ? void 0 : response.event_received) === 1) !== null && _a !== void 0 ? _a : false;
+    const success = (_a = (response === null || response === void 0 ? void 0 : response.events_received) === 1) !== null && _a !== void 0 ? _a : false;
     if (process.env.NEXT_PUBLIC_FB_DEBUG === 'true') {
         return res.status(200).json({
             debug: true,

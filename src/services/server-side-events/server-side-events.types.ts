@@ -17,5 +17,5 @@ export type Arguments = {
 };
 
 export type Response = {
-  event_received?: number
+  events_received?: number
 };

@@ -16,7 +16,7 @@ exports.sendServerSideEvent = void 0;
 const form_data_1 = __importDefault(require("form-data"));
 const graph_1 = __importDefault(require("../../api/graph"));
 /**
- * Send server side events to Facebook Graph API.
+ * Send server side event to Facebook Graph API.
  *
  * @param eventName
  * @param eventId

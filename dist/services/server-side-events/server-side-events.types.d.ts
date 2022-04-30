@@ -16,5 +16,5 @@ export declare type Arguments = {
     sourceUrl: string;
 };
 export declare type Response = {
-    event_received?: number;
+    events_received?: number;
 };
