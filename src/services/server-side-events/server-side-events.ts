@@ -1,6 +1,7 @@
 import FormData from 'form-data';
 import graphApi from '../../api/graph';
 import { Arguments, Response } from './server-side-events.types';
+import { sha256Hash } from '../../utils/hash';
 
 /**
  * Send server side event to Facebook Graph API.
@@ -46,8 +47,12 @@ const sendServerSideEvent = async ({
     user_data: {
       client_ip_address: ipAddress,
       client_user_agent: userAgent,
-      ...(emails && emails?.length > 0 && { em: emails }),
-      ...(phones && phones?.length > 0 && { ph: phones }),
+      ...(emails && emails?.length > 0 && {
+        em: emails.map((email) => (sha256Hash(email))),
+      }),
+      ...(phones && phones?.length > 0 && {
+        ph: phones.map((phone) => (sha256Hash(phone))),
+      }),
       fbc,
       fbp,
     },

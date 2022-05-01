@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sendServerSideEvent = void 0;
 const form_data_1 = __importDefault(require("form-data"));
 const graph_1 = __importDefault(require("../../api/graph"));
+const hash_1 = require("../../utils/hash");
 /**
  * Send server side event to Facebook Graph API.
  *
@@ -42,7 +43,11 @@ const sendServerSideEvent = ({ eventName, eventId, emails, phones, products, val
             event_id: eventId,
             event_source_url: sourceUrl,
             action_source: 'website',
-            user_data: Object.assign(Object.assign(Object.assign({ client_ip_address: ipAddress, client_user_agent: userAgent }, (emails && (emails === null || emails === void 0 ? void 0 : emails.length) > 0 && { em: emails })), (phones && (phones === null || phones === void 0 ? void 0 : phones.length) > 0 && { ph: phones })), { fbc,
+            user_data: Object.assign(Object.assign(Object.assign({ client_ip_address: ipAddress, client_user_agent: userAgent }, (emails && (emails === null || emails === void 0 ? void 0 : emails.length) > 0 && {
+                em: emails.map((email) => ((0, hash_1.sha256Hash)(email))),
+            })), (phones && (phones === null || phones === void 0 ? void 0 : phones.length) > 0 && {
+                ph: phones.map((phone) => ((0, hash_1.sha256Hash)(phone))),
+            })), { fbc,
                 fbp }),
             contents: products.map((product) => ({ id: product.sku, quantity: product.quantity })),
             custom_data: Object.assign(Object.assign({}, (value && { value })), (currency && { currency })),
