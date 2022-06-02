@@ -28,7 +28,7 @@ const fbPageView = (): void => {
 const fbEvent = (event: FBEventType): void => {
   const eventId = event.eventId ? event.eventId : uuidv4();
 
-  if (event.enableStandardPixel) {
+  if (typeof window !== "undefined" && event.enableStandardPixel) {
     const clientSidePayload = {
       content_type: 'product',
       contents: event.products.map((product) => (
