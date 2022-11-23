@@ -33,9 +33,9 @@
     "uuid": "^9.0.0"
   },
   "peerDependencies": {
-    "next": "^11 || ^12",
-    "react": "^16 || ^17 || ^18",
-    "react-dom": "^16 || ^17 || ^18"
+    "next": "^13",
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
