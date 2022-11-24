@@ -18,6 +18,7 @@ import { sha256Hash } from '../../utils/hash';
  * @param ipAddress
  * @param userAgent
  * @param sourceUrl
+ * @param testEventCode
  * @constructor
  */
 const sendServerSideEvent = async ({
@@ -33,6 +34,7 @@ const sendServerSideEvent = async ({
   ipAddress,
   userAgent,
   sourceUrl,
+  testEventCode,
 }: Arguments): Promise<Response> => {
   const formData = new FormData();
 
@@ -66,6 +68,9 @@ const sendServerSideEvent = async ({
   }];
 
   formData.append('data', JSON.stringify(eventData));
+  if (testEventCode) {
+    formData.append('test_event_code', testEventCode);
+  }
   formData.append('access_token', process.env.FB_ACCESS_TOKEN ?? '');
 
   return graphApi({

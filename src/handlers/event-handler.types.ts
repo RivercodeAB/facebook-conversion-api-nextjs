@@ -11,4 +11,5 @@ export type Arguments = {
   currency?: string
   userAgent: string
   sourceUrl: string
+  testEventCode?: string
 };

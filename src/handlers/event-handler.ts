@@ -35,6 +35,7 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     currency,
     userAgent,
     sourceUrl,
+    testEventCode,
   } = req.body as Arguments;
 
   if (!eventName || !products || products?.length < 1) {
@@ -56,6 +57,7 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     ipAddress: getClientIpAddress(req),
     userAgent,
     sourceUrl,
+    testEventCode,
   };
 
   const response = await sendServerSideEvent(payload);

@@ -14,6 +14,7 @@ export type Arguments = {
   ipAddress: string
   userAgent: string
   sourceUrl: string
+  testEventCode?: string
 };
 
 export type Response = {
