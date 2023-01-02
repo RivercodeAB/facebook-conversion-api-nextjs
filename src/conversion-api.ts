@@ -56,6 +56,7 @@ const fbEvent = (event: FBEventType): void => {
       currency: event.currency,
       userAgent: navigator.userAgent,
       sourceUrl: window.location.href,
+      testEventCode: event.testEventCode,
     });
 
     fetch('/api/fb-events', {
