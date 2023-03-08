@@ -19,6 +19,8 @@ import { sha256Hash } from '../../utils/hash';
  * @param userAgent
  * @param sourceUrl
  * @param testEventCode
+ * @param firstName
+ * @param lastName
  * @constructor
  */
 const sendServerSideEvent = async ({
@@ -35,6 +37,8 @@ const sendServerSideEvent = async ({
   userAgent,
   sourceUrl,
   testEventCode,
+  firstName,
+  lastName
 }: Arguments): Promise<Response> => {
   const formData = new FormData();
 
@@ -52,6 +56,8 @@ const sendServerSideEvent = async ({
       ...(emails && emails?.length > 0 && {
         em: emails.map((email) => (sha256Hash(email))),
       }),
+      fn: firstName ? sha256Hash(firstName.toLowerCase()) : undefined,
+      ln: lastName ? sha256Hash(lastName.toLowerCase()) : undefined,
       ...(phones && phones?.length > 0 && {
         ph: phones.map((phone) => (sha256Hash(phone))),
       }),

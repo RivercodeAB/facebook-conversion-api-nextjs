@@ -46,6 +46,11 @@ const fbEvent = (event: FBEventType): void => {
   }
 
   setTimeout(() => {
+    const forbiddenParams = ['lat', 'lng'];
+    const urlParams = new URLSearchParams(window.location.href.split('?')[1]);
+    forbiddenParams.forEach((param) => urlParams.delete(param));
+    const url = `${window.location.href.split('?')[0]}?${urlParams.toString()}`;
+
     const serverSidePayload = JSON.stringify({
       eventName: event.eventName,
       eventId,
@@ -55,8 +60,10 @@ const fbEvent = (event: FBEventType): void => {
       value: event.value,
       currency: event.currency,
       userAgent: navigator.userAgent,
-      sourceUrl: window.location.href,
+      sourceUrl: url,
       testEventCode: event.testEventCode,
+      firstName: event.firstName,
+      lastName: event.lastName,
     });
 
     fetch('/api/fb-events', {

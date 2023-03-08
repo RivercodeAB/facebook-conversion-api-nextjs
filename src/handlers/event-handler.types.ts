@@ -11,5 +11,8 @@ export type Arguments = {
   currency?: string
   userAgent: string
   sourceUrl: string
-  testEventCode?: string
+  testEventCode?: string,
+  fbc?: string,
+  firstName?: string,
+  lastName?: string
 };
