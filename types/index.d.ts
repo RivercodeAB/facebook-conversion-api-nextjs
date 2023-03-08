@@ -13,6 +13,7 @@ type FBEventType = {
   testEventCode?: string,
   firstName?: string,
   lastName?: string,
+  fbc?: string,
 };
 
 export default FBEventType;

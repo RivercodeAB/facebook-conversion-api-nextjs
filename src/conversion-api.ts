@@ -64,6 +64,7 @@ const fbEvent = (event: FBEventType): void => {
       testEventCode: event.testEventCode,
       firstName: event.firstName,
       lastName: event.lastName,
+      fbc: event.fbc,
     });
 
     fetch('/api/fb-events', {
