@@ -26,6 +26,11 @@ const sendServerSideEvent = async ({
   eventId,
   emails,
   phones,
+  firstName,
+  lastName,
+  country,
+  city,
+  zipCode,
   products,
   value,
   currency,
@@ -64,6 +69,11 @@ const sendServerSideEvent = async ({
     custom_data: {
       ...(value && { value }),
       ...(currency && { currency }),
+      ...(firstName && { fn: firstName }),
+      ...(lastName && { ln: lastName }),
+      ...(country && { country }),
+      ...(city && { city }),
+      ...(zipCode && { zip: zipCode }),
     },
   }];
 
