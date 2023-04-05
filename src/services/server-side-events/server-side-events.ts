@@ -60,6 +60,11 @@ const sendServerSideEvent = async ({
       ...(phones && phones?.length > 0 && {
         ph: phones.map((phone) => (sha256Hash(phone))),
       }),
+      ...(firstName && { fn: (sha256Hash(firstName)) }),
+      ...(lastName && { ln: (sha256Hash(lastName)) }),
+      ...(country && { country: (sha256Hash(country)) }),
+      ...(city && { ct: (sha256Hash(city)) }),
+      ...(zipCode && { zp: (sha256Hash(zipCode)) }),
       fbc,
       fbp,
     },
@@ -69,11 +74,6 @@ const sendServerSideEvent = async ({
     custom_data: {
       ...(value && { value }),
       ...(currency && { currency }),
-      ...(firstName && { fn: firstName }),
-      ...(lastName && { ln: lastName }),
-      ...(country && { country }),
-      ...(city && { city }),
-      ...(zipCode && { zip: zipCode }),
     },
   }];
 
