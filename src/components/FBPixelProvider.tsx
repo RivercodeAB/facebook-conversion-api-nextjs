@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { fbPageView } from '../conversion-api';
 
-const FBPixelProvider = ({ children }) => {
+type Props = {
+  children: React.ReactNode
+};
+
+const FBPixelProvider = ({ children }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
