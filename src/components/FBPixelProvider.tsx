@@ -2,11 +2,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { fbPageView } from '../conversion-api';
 
-type Props = {
-  children: React.ReactNode
-};
-
-const FBPixelProvider = ({ children }: Props) => {
+const FBPixelProvider = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -20,7 +16,12 @@ const FBPixelProvider = ({ children }: Props) => {
     };
   }, [router.events]);
 
-  return children;
+  return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
+      {children}
+    </>
+  );
 };
 
 export default FBPixelProvider;
