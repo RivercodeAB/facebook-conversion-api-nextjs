@@ -3,10 +3,10 @@ import { useRouter } from 'next/router';
 import { fbPageView } from '../conversion-api';
 
 type Props = {
-  children: JSX.Element
+  children: React.ReactNode
 };
 
-const FBPixelProvider: React.FC<Props> = ({ children }) => {
+const FBPixelProvider = ({ children }: Props) => {
   const router = useRouter();
 
   useEffect(() => {

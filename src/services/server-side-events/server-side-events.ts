@@ -10,6 +10,11 @@ import { sha256Hash } from '../../utils/hash';
  * @param eventId
  * @param emails
  * @param phones
+ * @param firstName
+ * @param lastName
+ * @param country
+ * @param city
+ * @param zipCode
  * @param products
  * @param value
  * @param currency
@@ -26,6 +31,11 @@ const sendServerSideEvent = async ({
   eventId,
   emails,
   phones,
+  firstName,
+  lastName,
+  country,
+  city,
+  zipCode,
   products,
   value,
   currency,
@@ -54,6 +64,21 @@ const sendServerSideEvent = async ({
       }),
       ...(phones && phones?.length > 0 && {
         ph: phones.map((phone) => (sha256Hash(phone))),
+      }),
+      ...(firstName && {
+        fn: (sha256Hash(firstName)),
+      }),
+      ...(lastName && {
+        ln: (sha256Hash(lastName)),
+      }),
+      ...(country && {
+        country: (sha256Hash(country)),
+      }),
+      ...(city && {
+        ct: (sha256Hash(city)),
+      }),
+      ...(zipCode && {
+        zp: (sha256Hash(zipCode)),
       }),
       fbc,
       fbp,

@@ -2,11 +2,10 @@ import React from 'react';
 import Script from 'next/script';
 
 const FBPixelScript = () => (
-  <>
-    <Script
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `
+  <Script
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `
           !function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -17,9 +16,8 @@ const FBPixelScript = () => (
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');
         `,
-      }}
-    />
-  </>
+    }}
+  />
 );
 
 export default FBPixelScript;

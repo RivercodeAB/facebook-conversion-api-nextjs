@@ -1,6 +1,6 @@
 {
   "name": "@rivercode/facebook-conversion-api-nextjs",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Facebook Conversion API for Next.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,11 +10,12 @@
     "./components": "./dist/components/index.js"
   },
   "scripts": {
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "lint:tsc": "tsc",
     "watch": "tsc --watch",
     "build": "tsc --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "lint:tsc": "tsc",
+    "link": "npx link",
+    "setup": "yarn install && yarn run link && yarn run watch"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,7 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "universal-cookie": "^4.0.4",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "peerDependencies": {
     "next": "^11 || ^12 || ^13",
@@ -37,23 +38,23 @@
     "react-dom": "^16 || ^17 || ^18 || ^19"
   },
   "devDependencies": {
-    "@types/node": "^16.11.31",
-    "@types/react": "^17.0.44",
-    "@types/react-dom": "^17.0.16",
-    "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "next": "11.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.6.3"
+    "@types/node": "^18.16.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "next": "^13.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.4"
   },
   "keywords": [
     "facebook-conversion-api",
