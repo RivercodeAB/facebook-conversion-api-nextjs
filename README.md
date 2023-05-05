@@ -76,7 +76,7 @@ fbEvent({
   country: 'country', // optional
   city: 'city', // optional
   zipCode: 'zipCode', // optional
-  products: [{
+  products: [{ // optional
     sku: 'product123',
     quantity: 1,
   }],
