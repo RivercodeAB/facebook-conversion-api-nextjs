@@ -30,10 +30,15 @@ const fbEvent = (event: FBEventType): void => {
 
   if (event.enableStandardPixel) {
     const clientSidePayload = {
-      content_type: 'product',
-      contents: event.products.map((product) => (
-        { id: product.sku, quantity: product.quantity }
-      )),
+      ...(event?.products && event.products.length > 0) && {
+        content_type: 'product',
+        contents: event.products.map((product) => (
+          {
+            id: product.sku,
+            quantity: product.quantity,
+          }
+        )),
+      },
       ...(event.value && { value: event.value }),
       ...(event.currency && { currency: event.currency }),
     };

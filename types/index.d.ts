@@ -8,7 +8,7 @@ type FBEventType = {
   country?: string
   city?: string
   zipCode?: string
-  products: {
+  products?: {
     sku: string
     quantity: number
   }[]

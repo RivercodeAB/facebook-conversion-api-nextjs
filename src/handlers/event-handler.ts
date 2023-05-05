@@ -43,9 +43,9 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     testEventCode,
   } = req.body as Arguments;
 
-  if (!eventName || !products || products?.length < 1) {
+  if (!eventName) {
     return res.status(400).json({
-      error: 'The request body is missing required parameters',
+      error: 'The request body is missing required parameters: eventName',
     });
   }
 

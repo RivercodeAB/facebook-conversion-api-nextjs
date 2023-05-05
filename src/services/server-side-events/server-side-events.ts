@@ -1,4 +1,4 @@
-import FormData from 'form-data';
+import { FormData } from 'formdata-node';
 import graphApi from '../../api/graph';
 import { Arguments, Response } from './server-side-events.types';
 import { sha256Hash } from '../../utils/hash';
@@ -83,9 +83,15 @@ const sendServerSideEvent = async ({
       fbc,
       fbp,
     },
-    contents: products.map((product) => (
-      { id: product.sku, quantity: product.quantity }
-    )),
+    ...(products && products.length > 0) && {
+      content_type: 'product',
+      contents: products.map((product) => (
+        {
+          id: product.sku,
+          quantity: product.quantity,
+        }
+      )),
+    },
     custom_data: {
       ...(value && { value }),
       ...(currency && { currency }),
