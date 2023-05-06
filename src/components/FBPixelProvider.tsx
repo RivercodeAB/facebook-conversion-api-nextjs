@@ -10,9 +10,7 @@ const FBPixelProvider = ({ children }: Props) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.asPath.includes('?')) {
-      fbPageView();
-    }
+    fbPageView();
 
     router.events.on('routeChangeComplete', fbPageView);
     return () => {

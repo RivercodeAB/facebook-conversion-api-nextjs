@@ -14,7 +14,6 @@
   },
   "include": [
     "./src/**/*",
-    "./types/**/*",
   ],
   "exclude": [
     "./dist",

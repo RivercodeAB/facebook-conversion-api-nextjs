@@ -1,7 +1,34 @@
 import { FormData } from 'formdata-node';
-import graphApi from '../../api/graph';
-import { Arguments, Response } from './server-side-events.types';
-import { sha256Hash } from '../../utils/hash';
+import graphApi from '../api/graph-api';
+import { sha256Hash } from '../utils/hash';
+
+type Arguments = {
+  eventName: string
+  eventId: string
+  emails?: Array<string> | null
+  phones?: Array<string> | null
+  firstName?: string
+  lastName?: string
+  country?: string
+  city?: string
+  zipCode?: string
+  products: {
+    sku: string
+    quantity: number
+  }[]
+  value?: number
+  currency?: string
+  fbp: string
+  fbc: string
+  ipAddress: string
+  userAgent: string
+  sourceUrl: string
+  testEventCode?: string
+};
+
+type Response = {
+  events_received?: number
+};
 
 /**
  * Send server side event to Facebook Graph API.

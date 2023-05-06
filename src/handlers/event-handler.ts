@@ -1,7 +1,27 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getClientIpAddress, getClientFbp, getClientFbc } from '../utils/request';
 import { sendServerSideEvent } from '../services/server-side-events';
-import { Arguments } from './event-handler.types';
+
+type Arguments = {
+  eventName: string
+  eventId: string
+  emails?: Array<string> | null
+  phones?: Array<string> | null
+  firstName?: string
+  lastName?: string
+  country?: string
+  city?: string
+  zipCode?: string
+  products: {
+    sku: string
+    quantity: number
+  }[]
+  value?: number
+  currency?: string
+  userAgent: string
+  sourceUrl: string
+  testEventCode?: string
+};
 
 /**
  * Facebook Conversion API Event Handler for Next.js.

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import debug from './utils/debug';
-import FBEventType from '../types';
+import { FBEvent } from './types';
 
 declare global {
   interface Window {
@@ -25,7 +25,7 @@ const fbPageView = (): void => {
  * @param event
  * @constructor
  */
-const fbEvent = (event: FBEventType): void => {
+const fbEvent = (event: FBEvent): void => {
   const eventId = event.eventId ? event.eventId : uuidv4();
 
   if (event.enableStandardPixel) {

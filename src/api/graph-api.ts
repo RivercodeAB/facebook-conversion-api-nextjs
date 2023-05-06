@@ -1,4 +1,7 @@
-import { Arguments } from './graph-api.types';
+type Arguments = {
+  endpoint: string
+  body: any
+};
 
 /**
  * Facebook Graph API client.
