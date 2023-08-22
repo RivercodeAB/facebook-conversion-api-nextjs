@@ -31,7 +31,7 @@ const eventHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     if (!process.env.NEXT_PUBLIC_FB_PIXEL_ID) {
         throw new Error('Missing NEXT_PUBLIC_FB_PIXEL_ID in environment file.');
     }
-    const { eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, userAgent, sourceUrl, testEventCode, } = req.body;
+    const { eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, userAgent, sourceUrl, testEventCode, contentName, } = req.body;
     if (!eventName) {
         return res.status(400).json({
             error: 'The request body is missing required parameters: eventName',
@@ -56,6 +56,7 @@ const eventHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         userAgent,
         sourceUrl,
         testEventCode,
+        contentName,
     };
     const response = yield (0, server_side_events_1.sendServerSideEvent)(payload);
     const success = (_a = (response === null || response === void 0 ? void 0 : response.events_received) === 1) !== null && _a !== void 0 ? _a : false;

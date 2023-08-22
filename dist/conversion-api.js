@@ -25,13 +25,13 @@ exports.fbPageView = fbPageView;
 const fbEvent = (event) => {
     const eventId = event.eventId ? event.eventId : (0, uuid_1.v4)();
     if (event.enableStandardPixel) {
-        const clientSidePayload = Object.assign(Object.assign(Object.assign({}, ((event === null || event === void 0 ? void 0 : event.products) && event.products.length > 0) && {
+        const clientSidePayload = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, ((event === null || event === void 0 ? void 0 : event.products) && event.products.length > 0) && {
             content_type: 'product',
             contents: event.products.map((product) => ({
                 id: product.sku,
                 quantity: product.quantity,
             })),
-        }), (event.value && { value: event.value })), (event.currency && { currency: event.currency }));
+        }), (event.value && { value: event.value })), (event.currency && { currency: event.currency })), (event.contentName && { content_name: event.contentName })), (event.sourceUrl && { source_url: event.sourceUrl }));
         window.fbq('track', event.eventName, clientSidePayload, { eventID: eventId });
         (0, debug_1.default)(`Client Side Event: ${event.eventName}`);
         (0, debug_1.default)(`Client Side Payload: ${JSON.stringify(clientSidePayload)}`);
@@ -52,8 +52,9 @@ const fbEvent = (event) => {
             value: event.value,
             currency: event.currency,
             userAgent: navigator.userAgent,
-            sourceUrl: window.location.href,
+            sourceUrl: event.sourceUrl || window.location.href,
             testEventCode: event.testEventCode,
+            contentName: event.contentName,
         });
         fetch('/api/fb-events', {
             method: 'POST',

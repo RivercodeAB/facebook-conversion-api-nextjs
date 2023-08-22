@@ -20,6 +20,7 @@ type Arguments = {
     userAgent: string;
     sourceUrl: string;
     testEventCode?: string;
+    contentName?: string;
 };
 type Response = {
     events_received?: number;
@@ -47,5 +48,5 @@ type Response = {
  * @param testEventCode
  * @constructor
  */
-declare const sendServerSideEvent: ({ eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, fbc, fbp, ipAddress, userAgent, sourceUrl, testEventCode, }: Arguments) => Promise<Response>;
+declare const sendServerSideEvent: ({ eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, fbc, fbp, ipAddress, userAgent, sourceUrl, testEventCode, contentName, }: Arguments) => Promise<Response>;
 export { sendServerSideEvent, };

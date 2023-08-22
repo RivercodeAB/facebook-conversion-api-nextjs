@@ -39,7 +39,7 @@ const hash_1 = require("../utils/hash");
  * @param testEventCode
  * @constructor
  */
-const sendServerSideEvent = ({ eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, fbc, fbp, ipAddress, userAgent, sourceUrl, testEventCode, }) => __awaiter(void 0, void 0, void 0, function* () {
+const sendServerSideEvent = ({ eventName, eventId, emails, phones, firstName, lastName, country, city, zipCode, products, value, currency, fbc, fbp, ipAddress, userAgent, sourceUrl, testEventCode, contentName, }) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const formData = new formdata_node_1.FormData();
     const unixTimestampInSeconds = Math.floor(Date.now() / 1000);
@@ -64,7 +64,7 @@ const sendServerSideEvent = ({ eventName, eventId, emails, phones, firstName, la
                 id: product.sku,
                 quantity: product.quantity,
             })),
-        }), { custom_data: Object.assign(Object.assign({}, (value && { value })), (currency && { currency })) })];
+        }), { custom_data: Object.assign(Object.assign(Object.assign({}, (value && { value })), (currency && { currency })), (contentName && { content_name: contentName })) })];
     formData.append('data', JSON.stringify(eventData));
     if (testEventCode) {
         formData.append('test_event_code', testEventCode);
