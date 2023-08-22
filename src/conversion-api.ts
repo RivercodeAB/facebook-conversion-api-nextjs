@@ -37,10 +37,13 @@ const fbEvent = (event: FBEvent): void => {
             id: product.sku,
             quantity: product.quantity,
           }
-        )),
+
+  )),
       },
       ...(event.value && { value: event.value }),
       ...(event.currency && { currency: event.currency }),
+      ...(event.contentName && { content_name: event.contentName }),
+      ...(event.sourceUrl && { source_url: event.sourceUrl }),
     };
 
     window.fbq('track', event.eventName, clientSidePayload, { eventID: eventId });
@@ -65,8 +68,9 @@ const fbEvent = (event: FBEvent): void => {
       value: event.value,
       currency: event.currency,
       userAgent: navigator.userAgent,
-      sourceUrl: window.location.href,
+      sourceUrl: event.sourceUrl || window.location.href,
       testEventCode: event.testEventCode,
+      contentName: event.contentName,
     });
 
     fetch('/api/fb-events', {

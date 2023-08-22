@@ -21,6 +21,7 @@ type Arguments = {
   userAgent: string
   sourceUrl: string
   testEventCode?: string
+  contentName?: string
 };
 
 /**
@@ -61,6 +62,7 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     userAgent,
     sourceUrl,
     testEventCode,
+    contentName,
   } = req.body as Arguments;
 
   if (!eventName) {
@@ -88,6 +90,7 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     userAgent,
     sourceUrl,
     testEventCode,
+    contentName,
   };
 
   const response = await sendServerSideEvent(payload);

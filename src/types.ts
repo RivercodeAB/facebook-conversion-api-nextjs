@@ -1,4 +1,5 @@
 export type FBEvent = {
+  sourceUrl?: string
   eventName: string
   eventId?: string
   emails?: Array<string> | null
@@ -16,4 +17,5 @@ export type FBEvent = {
   currency?: string
   enableStandardPixel?: boolean
   testEventCode?: string
+  contentName?: string
 };
