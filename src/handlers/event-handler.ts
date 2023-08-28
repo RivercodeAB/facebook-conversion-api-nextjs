@@ -41,7 +41,7 @@ const eventHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     throw new Error('Missing FB_ACCESS_TOKEN in environment file.');
   }
 
-  if (!process.env.NEXT_PUBLIC_FB_PIXEL_ID) {
+  if (!process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID) {
     throw new Error('Missing NEXT_PUBLIC_FB_PIXEL_ID in environment file.');
   }
 
