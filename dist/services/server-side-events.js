@@ -16,6 +16,7 @@ exports.sendServerSideEvent = void 0;
 const formdata_node_1 = require("formdata-node");
 const graph_api_1 = __importDefault(require("../api/graph-api"));
 const hash_1 = require("../utils/hash");
+const uuid_1 = require("uuid");
 /**
  * Send server side event to Facebook Graph API.
  *
@@ -43,7 +44,8 @@ const sendServerSideEvent = ({ eventName, eventId, emails, phones, firstName, la
     var _a;
     const formData = new formdata_node_1.FormData();
     const unixTimestampInSeconds = Math.floor(Date.now() / 1000);
-    const eventData = [Object.assign(Object.assign({ event_name: eventName, event_time: unixTimestampInSeconds, event_id: eventId, event_source_url: sourceUrl, action_source: 'website', user_data: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ client_ip_address: ipAddress, client_user_agent: userAgent }, (emails && (emails === null || emails === void 0 ? void 0 : emails.length) > 0 && {
+    const c_eventId = eventId ? eventId : (0, uuid_1.v4)();
+    const eventData = [Object.assign(Object.assign({ event_name: eventName, event_time: unixTimestampInSeconds, event_id: c_eventId, event_source_url: sourceUrl, action_source: 'website', user_data: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ client_ip_address: ipAddress, client_user_agent: userAgent }, (emails && (emails === null || emails === void 0 ? void 0 : emails.length) > 0 && {
                 em: emails.map((email) => ((0, hash_1.sha256Hash)(email))),
             })), (phones && (phones === null || phones === void 0 ? void 0 : phones.length) > 0 && {
                 ph: phones.map((phone) => ((0, hash_1.sha256Hash)(phone))),

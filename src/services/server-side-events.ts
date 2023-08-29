@@ -1,10 +1,11 @@
 import { FormData } from 'formdata-node';
 import graphApi from '../api/graph-api';
 import { sha256Hash } from '../utils/hash';
+import { v4 as uuidv4 } from 'uuid';
 
 type Arguments = {
   eventName: string
-  eventId: string
+  eventId?: string
   emails?: Array<string> | null
   phones?: Array<string> | null
   firstName?: string
@@ -18,11 +19,11 @@ type Arguments = {
   }[]
   value?: number
   currency?: string
-  fbp: string
-  fbc: string
-  ipAddress: string
-  userAgent: string
-  sourceUrl: string
+  fbp?: string
+  fbc?: string
+  ipAddress?: string
+  userAgent?: string
+  sourceUrl?: string
   testEventCode?: string
 };
 
@@ -77,10 +78,12 @@ const sendServerSideEvent = async ({
 
   const unixTimestampInSeconds = Math.floor(Date.now() / 1000);
 
+  const c_eventId = eventId ? eventId : uuidv4();
+
   const eventData = [{
     event_name: eventName,
     event_time: unixTimestampInSeconds,
-    event_id: eventId,
+    event_id: c_eventId,
     event_source_url: sourceUrl,
     action_source: 'website',
     user_data: {

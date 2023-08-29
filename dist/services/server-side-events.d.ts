@@ -1,6 +1,6 @@
 type Arguments = {
     eventName: string;
-    eventId: string;
+    eventId?: string;
     emails?: Array<string> | null;
     phones?: Array<string> | null;
     firstName?: string;
@@ -14,11 +14,11 @@ type Arguments = {
     }[];
     value?: number;
     currency?: string;
-    fbp: string;
-    fbc: string;
-    ipAddress: string;
-    userAgent: string;
-    sourceUrl: string;
+    fbp?: string;
+    fbc?: string;
+    ipAddress?: string;
+    userAgent?: string;
+    sourceUrl?: string;
     testEventCode?: string;
 };
 type Response = {
