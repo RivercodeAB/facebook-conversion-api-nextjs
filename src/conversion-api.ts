@@ -64,8 +64,6 @@ const fbEvent = (event: FBEvent): void => {
       products: event.products,
       value: event.value,
       currency: event.currency,
-      userAgent: navigator.userAgent,
-      sourceUrl: window.location.href,
       testEventCode: event.testEventCode,
     });
 
