@@ -4,9 +4,9 @@ import { fbPageView } from '../conversion-api';
 import { usePathname, useSearchParams } from 'next/navigation'
 
 export function FBPixelProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  useEffect(fbPageView, [pathname, searchParams])
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  useEffect(fbPageView, [pathname, searchParams]);
   return (
     children
   )
