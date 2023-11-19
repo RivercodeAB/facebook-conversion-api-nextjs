@@ -1,4 +1,5 @@
 "use strict";
+'use client';
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -23,20 +24,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FBPixelProvider = void 0;
 const react_1 = __importStar(require("react"));
-const router_1 = require("next/router");
 const conversion_api_1 = require("../conversion-api");
-const FBPixelProvider = ({ children }) => {
-    const router = (0, router_1.useRouter)();
-    (0, react_1.useEffect)(() => {
-        (0, conversion_api_1.fbPageView)();
-        router.events.on('routeChangeComplete', conversion_api_1.fbPageView);
-        return () => {
-            router.events.off('routeChangeComplete', conversion_api_1.fbPageView);
-        };
-    }, [router.events]);
-    return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    react_1.default.createElement(react_1.default.Fragment, null, children));
-};
+const navigation_1 = require("next/navigation");
+function FBPixelProvider() {
+    const pathname = (0, navigation_1.usePathname)();
+    const searchParams = (0, navigation_1.useSearchParams)();
+    (0, react_1.useEffect)(() => conversion_api_1.fbPageView, [pathname, searchParams]);
+    return (react_1.default.createElement(react_1.Suspense, { fallback: null }, null));
+}
+exports.FBPixelProvider = FBPixelProvider;
 exports.default = FBPixelProvider;

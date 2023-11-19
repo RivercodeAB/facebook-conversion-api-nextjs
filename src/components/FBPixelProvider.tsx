@@ -1,29 +1,18 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
+'use client'
+import React, { Suspense, useEffect } from 'react';
 import { fbPageView } from '../conversion-api';
+import { usePathname, useSearchParams } from 'next/navigation'
 
-type Props = {
-  children: React.ReactNode
-};
-
-const FBPixelProvider = ({ children }: Props) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    fbPageView();
-
-    router.events.on('routeChangeComplete', fbPageView);
-    return () => {
-      router.events.off('routeChangeComplete', fbPageView);
-    };
-  }, [router.events]);
-
+export function FBPixelProvider() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  useEffect(() => fbPageView, [pathname, searchParams])
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
-    <>
-      {children}
-    </>
-  );
-};
+    <Suspense fallback={null}>
+      {null}
+    </Suspense>
+  )
+
+}
 
 export default FBPixelProvider;
