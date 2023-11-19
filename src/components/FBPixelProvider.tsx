@@ -6,13 +6,10 @@ import { usePathname, useSearchParams } from 'next/navigation'
 export function FBPixelProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
-  useEffect(() => fbPageView, [pathname, searchParams])
+  useEffect(fbPageView, [pathname, searchParams])
   return (
-    <Suspense fallback={null}>
-      {children}
-    </Suspense>
+    children
   )
-
 }
 
 export default FBPixelProvider;
