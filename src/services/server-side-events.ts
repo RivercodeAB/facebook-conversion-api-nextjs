@@ -3,8 +3,8 @@ import graphApi from '../api/graph-api';
 import { sha256Hash } from '../utils/hash';
 
 type Arguments = {
-  eventName: string
-  eventId: string
+  eventName?: string
+  eventId?: string
   emails?: Array<string> | null
   phones?: Array<string> | null
   firstName?: string
@@ -18,9 +18,9 @@ type Arguments = {
   }[]
   value?: number
   currency?: string
-  fbp: string
-  fbc: string
-  ipAddress: string
+  fbp?: string
+  fbc?: string
+  ipAddress?: string
   userAgent: string
   sourceUrl: string
   testEventCode?: string
