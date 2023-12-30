@@ -5,8 +5,8 @@ import { getClientIpAddress, getClientFbp, getClientFbc } from './utils/request'
 export {
   fbPageView,
   fbEvent,
-	getClientIpAddress,
-	getClientFbp,
-	getClientFbc,
-	sendServerSideEvent
+  getClientIpAddress,
+  getClientFbp,
+  getClientFbc,
+  sendServerSideEvent
 };
